@@ -1,33 +1,34 @@
-```jsx
 import React from 'react';
-import './Header.css'; // Assuming you have some basic styles for the header
+import { Link } from 'react-router-dom';
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 const Header = () => {
   return (
-    <header className="header">
-      <div className="header__logo">
-        <img src="/path/to/logo.png" alt="Logo" />
+    <header className="flex items-center justify-between p-4 bg-white border-b">
+      <div className="flex items-center">
+        <Link to="/" className="text-2xl font-bold mr-8">Financial Times</Link>
+        <nav>
+          <ul className="flex space-x-4">
+            <li><Link to="/" className="text-gray-600 hover:text-gray-900">Home</Link></li>
+            <li><Link to="/markets" className="text-gray-600 hover:text-gray-900">Markets</Link></li>
+            <li><Link to="/economy" className="text-gray-600 hover:text-gray-900">Economy</Link></li>
+            <li><Link to="/careers" className="text-gray-600 hover:text-gray-900">Work & Careers</Link></li>
+            <li><Link to="/arts" className="text-gray-600 hover:text-gray-900">Life & Arts</Link></li>
+          </ul>
+        </nav>
       </div>
-      <nav className="header__nav">
-        <ul>
-          <li><a href="/home">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/services">Services</a></li>
-          <li><a href="/contact">Contact</a></li>
-        </ul>
-      </nav>
-      <div className="header__search">
-        <input type="text" placeholder="Search..." />
-        <button type="submit">Search</button>
-      </div>
-      <div className="header__profile">
-        <img src="/path/to/profile-icon.png" alt="User Profile" />
+      <div className="flex items-center space-x-4">
+        <Input type="search" placeholder="Search..." className="w-64" />
+        <Button variant="outline">Search</Button>
+        <Avatar>
+          <AvatarImage src="https://github.com/shadcn.png" alt="@shadcn" />
+          <AvatarFallback>CN</AvatarFallback>
+        </Avatar>
       </div>
     </header>
   );
 };
 
 export default Header;
-```
-
-Note: Make sure to replace `/path/to/logo.png` and `/path/to/profile-icon.png` with the actual paths to your logo and profile icon images. Additionally, you might want to create a `Header.css` file to style the header component as needed.
